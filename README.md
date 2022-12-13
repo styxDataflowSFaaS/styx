@@ -1,2 +1,1 @@
-# styx
-Styx submission for OSDI 2023
+### STYX: A Transactional Deterministic SFAAS System running on Dataflows

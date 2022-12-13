@@ -1,0 +1,9 @@
+auth:
+  rootUser: minio
+  rootPassword: minio123
+persistence:
+  size: 4Gi
+resources:
+  requests:
+    memory: 2Gi
+    cpu: 1

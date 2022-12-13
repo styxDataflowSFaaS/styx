@@ -1,0 +1,20 @@
+replicaCount: 3
+externalAccess:
+  enabled: true
+  autoDiscovery:
+    enabled: true
+  service:
+    type: LoadBalancer
+    ports:
+      external: 9094
+serviceAccount:
+  create: true
+rbac:
+  create: true
+resources:
+  requests:
+    memory: 2Gi
+    cpu: 1
+provisioning:
+  numPartitions: 2
+  topics: ['t1', 't2', 't3']

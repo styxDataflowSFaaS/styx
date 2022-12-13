@@ -1,0 +1,10 @@
+# networking service
+uvloop==0.17.0
+msgpack==1.0.4
+cloudpickle==2.2.0
+pyzmq==24.0.1
+aiozmq==1.0.0
+# monitoring service
+# psutil==5.9.1
+# kafka
+kafka-python==2.0.2
