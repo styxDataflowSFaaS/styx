@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+
+  coordinator:
+    build:
+      context: .
+      dockerfile: coordinator/coordinator.dockerfile
+    image: dev/styx-coordinator:latest
+    ports:
+      - "8886:8888"
+    env_file:
+      - env/minio.env
+    environment:
+      - KAFKA_URL=kafka1:9092
+      - HEARTBEAT_LIMIT=10000
+      - HEARTBEAT_CHECK_INTERVAL=1000
+#    deploy:
+#      resources:
+#        limits:
+#          memory: '1g'
+#          cpus: '1'
+#        reservations:
+#          memory: '1g'
+#          cpus: '1'
+
+  worker:
+    build:
+      context: .
+      dockerfile: worker/worker.dockerfile
+    image: dev/styx:latest
+    environment:
+      - INGRESS_TYPE=KAFKA
+      - KAFKA_URL=kafka1:9092
+      - DISCOVERY_HOST=coordinator
+      - DISCOVERY_PORT=8888
+    env_file:
+      - env/minio.env
+#    deploy:
+#      resources:
+#        limits:
+#          memory: '1g'
+#          cpus: '1'
+#        reservations:
+#          memory: '1g'
+#          cpus: '1'

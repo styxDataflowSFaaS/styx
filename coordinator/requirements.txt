@@ -1,0 +1,15 @@
+# networking service
+uvloop==0.17.0
+msgspec==0.18.2
+cloudpickle==2.2.1
+pyzmq==25.1.1
+aiozmq==1.0.0
+# monitoring service
+# psutil==5.9.1
+# kafka
+kafka-python==2.0.2
+# snapshots
+minio==7.1.16
+
+# deathstar
+geopy

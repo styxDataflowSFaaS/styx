@@ -1,0 +1,6 @@
+sanic==22.9.1
+cloudpickle==2.2.0
+msgpack==1.0.4
+aiozmq==1.0.0
+pyzmq==24.0.1
+pandas==1.5.2

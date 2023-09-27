@@ -1,0 +1,30 @@
+# the keys will be packed into short unsigned integers
+com_type_mappings: dict[int, str] = {
+    0: 'RUN_FUN_REMOTE',
+    1: 'RUN_FUN_RQ_RS_REMOTE',
+    2: 'SEND_EXECUTION_GRAPH',
+    3: 'ACK',
+    4: 'RECEIVE_EXE_PLN',
+    5: 'REGISTER_WORKER',
+    6: 'SYNC',
+    7: 'CMT',
+    8: 'SYNC_SEQ',
+    9: 'PROC_DONE',
+    10: 'INIT_SEQ',
+    11: 'GET_LOCAL_TOPICS',
+    12: 'FALLBACK_DONE',
+    13: 'FALLBACK_START',
+    14: 'UNLOCK',
+    15: 'RECEIVE_SEQ',
+    16: 'CLIENT_MSG',
+    17: 'DET_REORDERING',
+    18: 'SNAP_ID',
+    19: 'HEARTBEAT',
+    # means some other worker died needs to snap_id and offsets
+    20: 'RECOVER_OTHER',
+    # means worker died needs to receive everything
+    21: 'RECOVER_OWN',
+    22: 'READY_AFTER_RECOVERY',
+    23: 'SYNC_CLEANUP',
+    99: 'SNAP_MARKER',
+}

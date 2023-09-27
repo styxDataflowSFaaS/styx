@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  labels:
+    app.kubernetes.io/name: ingress
+    app.kubernetes.io/part-of: ingress
+data:
+  9000: "default/coordinator:8888"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress
+spec:
+  type: LoadBalancer
+  ports:
+    - name: proxied-tcp-9000
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: ingress
+    app.kubernetes.io/part-of: ingress

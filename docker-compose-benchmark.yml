@@ -1,0 +1,18 @@
+version: "3"
+services:
+
+  benchmark:
+    build:
+      context: .
+      dockerfile: benchmark/benchmark.dockerfile
+    image: dev/styx-benchmark-client:latest
+    environment:
+      - STYX_HOST=coordinator
+      - STYX_PORT=8888
+      - PYTHONUNBUFFERED=TRUE
+      - KAFKA_URL=kafka1:9092
+      - SANIC_RESPONSE_TIMEOUT=6000
+    depends_on:
+      - coordinator
+    ports:
+      - "5000:5000"

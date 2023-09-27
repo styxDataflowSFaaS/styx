@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: benchmark-service
+spec:
+  type: ClusterIP
+  selector:
+    component: benchmark
+  ports:
+    - port: 5000
+      name: http
+      targetPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: benchmark-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: benchmark
+  template:
+    metadata:
+      labels:
+        component: benchmark
+    spec:
+      containers:
+        - name: benchmark
+          image: styx-benchmark-client:latest
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+          ports:
+            - containerPort: 5000
+          env:
+            - name: STYX_HOST
+              value: "coordinator-service"
+            - name: STYX_PORT
+              value: '8888'
+            - name: KAFKA_URL
+              value: 'kafka:9092'
+            - name: SANIC_RESPONSE_TIMEOUT
+              value: "6000"
